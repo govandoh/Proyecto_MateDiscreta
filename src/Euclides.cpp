@@ -3,8 +3,11 @@
 using namespace std;
 //Declaracion de Variables
 int A, B, C, Residuo_temp, n1, n2, n3, menor1, menor2;
+int salir = 0;
+int opcion;
 
 void pedirDosNumeros(){
+	cout<<" \n ****ALGORITMO CON DOS NUMEROS *** \n";
 	cout<<"Ingrese el primero numero: \n";
 	cin>>n1; 
 	cout<<"Ingrese el segundo numero: \n";
@@ -12,6 +15,7 @@ void pedirDosNumeros(){
 }
 
 void pedirTresNumeros(){
+	cout<<" ****ALGORITMO CON TRES NUMEROS *** \n";
 	cout<<"Ingrese el primero numero: \n";
 	cin>>n1; 
 	cout<<"Ingrese el segundo numero: \n";
@@ -24,16 +28,18 @@ int determinar_Menor(int n1, int n2){
 	if(n1 < n2){
 		A = n2;
 		B = n1;
-		cout<<"El primer numero es menor: "<<B<<"\n";
+		cout<<"\n";
+		cout<<"El numero menor es: "<<B<<"\n\n";
 	}else{
 		B = n2; 
 		A = n1;
-		cout<<"El segundo numero es menor: "<<B<<"\n";
+		cout<<"\n";
+		cout<<"El numero menor es: "<<B<<"\n\n";
 	}
 	return 0;
 }
 
-/*int determinar_Menores(int n1, int n2, int n3){
+int determinar_Menores(int n1, int n2, int n3){
 	if(n1>n2){
 		menor1=n1;
 		n1=n2;
@@ -61,10 +67,10 @@ int determinar_Menor(int n1, int n2){
 	cout<<menor2<< "\n";
 	cout<<n3<< "\n";
 	
-}*/
+}
 
 void mostrarMCD(){
-	cout<<"El MCD de: "<< A << " entre: " << B << " es: "<< Residuo_temp; 
+	cout<<"\n El MCD de: "<< A << " entre: " << B << " es: "<< Residuo_temp<<"\n"; 
 }
 
 int mcd_Euclides(int A, int B){
@@ -78,11 +84,34 @@ int mcd_Euclides(int A, int B){
 }
 
 
+void menu() {
+	cout<<"\n------- MENU PRINCIPAL - ALGORITMO DE EUCLIDES -------- \n";
+	cout<<" 1 - Algoritmo de Euclides con 2 Numeros \n";
+	cout<<" 2 - Algoritmo de Euclides con 3 Numeros \n";
+	cout<<" 3 - Salir \n";
+}
+
 int main(){
-	pedirDosNumeros();
-	determinar_Menor(n1,n2);
-	mcd_Euclides(A,B);
-	mostrarMCD();
+	
+	while(!salir){
+		menu();
+		printf("\n Opcion: ");
+		scanf("%d", &opcion);
+		switch(opcion){
+			case 1: pedirDosNumeros();
+					determinar_Menor(n1,n2);
+					mcd_Euclides(A,B);
+					mostrarMCD();
+				break; 
+			case 2: pedirTresNumeros();
+					determinar_Menores(n1, n2, n3);
+				break;
+			case 3: salir = 1;
+					exit(1);
+					break;
+			default: printf("\n ¡OPCION NO VALIDA! \n\n");
+		}
+	}
 	//determinar_Menores(n1, n2, n3);
-	return A;
+	return 0;
 }
