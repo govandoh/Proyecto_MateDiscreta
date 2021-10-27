@@ -1,12 +1,26 @@
+#include <conio.h>
 #include <iostream>
 #include <stdio.h>
+#include <windows.h>
+
 using namespace std;
 //Declaracion de Variables
 int A, B, C, Residuo_temp, n1, n2, n3, menor1, menor2;
 int salir = 0;
 int opcion;
 
-void pedirDosNumeros(){
+class Project {
+public:
+	void pedirDosNumeros();
+	void pedirTresNumeros();
+	int determinar_Menor(int n1, int n2);
+	int determinar_Menores(int n1, int n2, int n3);
+	void mostrarMCD();
+	void menu();
+	int mcd_Euclides(int A, int B);
+};
+
+void Project::pedirDosNumeros(){
 	cout<<" \n ****ALGORITMO CON DOS NUMEROS *** \n";
 	cout<<"Ingrese el primero numero: \n";
 	cin>>n1; 
@@ -14,7 +28,7 @@ void pedirDosNumeros(){
 	cin>>n2;
 }
 
-void pedirTresNumeros(){
+void Project::pedirTresNumeros(){
 	cout<<" ****ALGORITMO CON TRES NUMEROS *** \n";
 	cout<<"Ingrese el primero numero: \n";
 	cin>>n1; 
@@ -24,7 +38,7 @@ void pedirTresNumeros(){
 	cin>>n3;
 }
 
-int determinar_Menor(int n1, int n2){
+int Project::determinar_Menor(int n1, int n2){
 	if(n1 < n2){
 		A = n2;
 		B = n1;
@@ -39,7 +53,7 @@ int determinar_Menor(int n1, int n2){
 	return 0;
 }
 
-int determinar_Menores(int n1, int n2, int n3){
+int Project::determinar_Menores(int n1, int n2, int n3){
 	if(n1>n2){
 		menor1=n1;
 		n1=n2;
@@ -69,11 +83,11 @@ int determinar_Menores(int n1, int n2, int n3){
 	
 }
 
-void mostrarMCD(){
+void Project::mostrarMCD(){
 	cout<<"\n El MCD de: "<< A << " entre: " << B << " es: "<< Residuo_temp<<"\n"; 
 }
 
-int mcd_Euclides(int A, int B){
+int Project::mcd_Euclides(int A, int B){
 	//Ciclo para validar si numero menro es diferente de 0
 	while(B != 0){
 		Residuo_temp = B; 
@@ -84,27 +98,28 @@ int mcd_Euclides(int A, int B){
 }
 
 
-void menu() {
-	cout<<"\n------- MENU PRINCIPAL - ALGORITMO DE EUCLIDES -------- \n";
+void Project::menu() {
+	cout<<"\n------- MENU PRINCIPAL / ALGORITMO DE EUCLIDES -------- \n";
+	cout<<"\n";
 	cout<<" 1 - Algoritmo de Euclides con 2 Numeros \n";
 	cout<<" 2 - Algoritmo de Euclides con 3 Numeros \n";
 	cout<<" 3 - Salir \n";
 }
 
 int main(){
-	
+	Project p = Project();
 	while(!salir){
-		menu();
+		p.menu();
 		printf("\n Opcion: ");
 		scanf("%d", &opcion);
 		switch(opcion){
-			case 1: pedirDosNumeros();
-					determinar_Menor(n1,n2);
-					mcd_Euclides(A,B);
-					mostrarMCD();
+			case 1: p.pedirDosNumeros();
+					p.determinar_Menor(n1,n2);
+					p.mcd_Euclides(A,B);
+					p.mostrarMCD();
 				break; 
-			case 2: pedirTresNumeros();
-					determinar_Menores(n1, n2, n3);
+			case 2: p.pedirTresNumeros();
+					p.determinar_Menores(n1, n2, n3);
 				break;
 			case 3: salir = 1;
 					exit(1);
