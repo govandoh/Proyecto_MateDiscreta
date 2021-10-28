@@ -23,21 +23,28 @@ public:
 
 void Project::pedirDosNumeros(){
 	cout<<" \n **** ALGORITMO CON DOS NUMEROS *** \n";
+	cout<<"---------------------------------- \n";
 	cout<<"Ingrese el primero numero: \n";
-	cin>>n1; 
+	cin>>n1;
+	cout<< "---------------------------------- \n";
 	cout<<"Ingrese el segundo numero: \n";
 	cin>>n2;
+	cout<< "----------------------------------";
 }
 
 void Project::pedirTresNumeros(){
 	cout<<"\n";
 	cout<<" \n **** ALGORITMO CON TRES NUMEROS *** \n";
+	cout<<"---------------------------------- \n";
 	cout<<"Ingrese el primero numero: \n";
-	cin>>n1; 
+	cin>>n1;
+	cout<< "---------------------------------- \n";
 	cout<<"Ingrese el segundo numero: \n";
 	cin>>n2;
+	cout<<"---------------------------------- \n";
 	cout<<"Ingrese el tercer numero: \n";
 	cin>>n3;
+	cout<<"---------------------------------- \n";
 }
 
 int Project::determinar_Menor(int n1, int n2){
@@ -140,6 +147,7 @@ void Project::menu() {
 }
 
 int main(){
+	system("color 03");
 	Project p = Project();
 	while(!salir){
 		p.menu();
